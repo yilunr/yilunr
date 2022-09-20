@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r}
+library(readr)
+library(sqldf)
+salary = read.csv('ds_salaries.csv')
+salary
+```
+```{r}
+us_salaries = sqldf(
+ "SELECT *
+  FROM salary
+  WHERE salary_currency = 'USD' and experience_level = 'EN'
+  GROUP BY job_title
+ "
+)
+us_salaries
+```
+
+
